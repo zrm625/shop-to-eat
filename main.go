@@ -1,11 +1,11 @@
 package main
 
 import (
-	"fmt"
+	"log"
 
 	"github.com/zrm625/shop-to-eat-db/config"
 )
 
 func main() {
-	fmt.Println(config.APIPort)
+	log.Println(config.APIPort)
 }
