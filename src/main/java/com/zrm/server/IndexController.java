@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RestController
 public class IndexController {
 
-    public static final String INDEX_MAPPING = "/";
+    public static final String ADD_MAPPING = "/hi";
     public static final String INDEX_RETURN = "Hi!";
 
-    @RequestMapping(INDEX_MAPPING)
-    public String index() {
+    @RequestMapping(ADD_MAPPING)
+    public String add() {
         return INDEX_RETURN;
     }
 }

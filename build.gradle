@@ -13,13 +13,14 @@ repositories {
 }
 
 dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	runtimeOnly 'org.postgresql:postgresql'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
-	    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.5.2")
-        testRuntime("org.junit.platform:junit-platform-runner:1.5.2")
+	testRuntime("org.junit.jupiter:junit-jupiter-engine:5.5.2")
+    testRuntime("org.junit.platform:junit-platform-runner:1.5.2")
 }
 
 test {
