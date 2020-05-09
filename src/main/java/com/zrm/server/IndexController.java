@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 
     public static final String INDEX_MAPPING = "/";
-    public static final String INDEX_RETURN = "Hi!";    
+    public static final String INDEX_RETURN = "Hi!";
 
-	@RequestMapping(INDEX_MAPPING)
-	public String index() {
-		return INDEX_RETURN;
-	}
+    @RequestMapping(INDEX_MAPPING)
+    public String index() {
+        return INDEX_RETURN;
+    }
 }
