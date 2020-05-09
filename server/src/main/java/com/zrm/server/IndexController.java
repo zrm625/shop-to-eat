@@ -13,5 +13,4 @@ public class IndexController {
 	public String index() {
 		return INDEX_RETURN;
 	}
-
 }
