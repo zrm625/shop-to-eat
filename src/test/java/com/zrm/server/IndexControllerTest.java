@@ -24,6 +24,6 @@ public class IndexControllerTest {
 	public void getHello() throws Exception {
 		mvc.perform(MockMvcRequestBuilders.get(IndexController.INDEX_MAPPING).accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
-				.andExpect(content().string(equalTo(IndexController.INDEX_RETURN)));
+				.andExpect(content().string(equalTo("IndexController.INDEX_RETURN")));
 	}
 }
