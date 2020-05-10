@@ -13,9 +13,9 @@ app.controller('FoodCtrl', ['$scope', 'FoodService',
             paginationOptions.pageSize).then(function (data) {
                 $scope.gridOptions.data = data.content;
                 $scope.gridOptions.totalItems = data.totalElements;
-            }, function errorCallback() {
-                console.log('errorCallback 1');
-            });
+            }.catch(function (e) {
+                console.log("got error", e);
+            }));
 
         $scope.gridOptions = {
             paginationPageSizes: [5, 10, 20],
@@ -39,8 +39,8 @@ app.controller('FoodCtrl', ['$scope', 'FoodService',
                             .then(function (data) {
                                 $scope.gridOptions.data = data.content;
                                 $scope.gridOptions.totalItems = data.totalElements;
-                            }, function errorCallback() {
-                                console.log('errorCallback 2');
+                            }).catch(function (e) {
+                                console.log("got error", e);
                             });
                     });
             }
@@ -56,8 +56,8 @@ app.service('FoodService', ['$http', function ($http) {
             url: 'foods?page=' + pageNumber + '&size=' + size
         }).then(function sucessCallback(response) {
             console.log('sucessCallback');
-        }, function errorCallback(response) {
-            console.log('errorCallback');
+        }).catch(function (e) {
+            console.log("got error", e);
         });
     }
     return {
