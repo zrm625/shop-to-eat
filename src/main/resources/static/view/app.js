@@ -1,66 +1,40 @@
 var app = angular.module('app', ['ui.grid', 'ui.grid.pagination']);
 
-app.controller('FoodCtrl', ['$scope', 'FoodService',
-    function ($scope, FoodService) {
-        var paginationOptions = {
-            pageNumber: 1,
-            pageSize: 5,
-            sort: null
-        };
+app.controller('FoodCtrl', ['$scope', '$http', 'uiGridConstants', function ($scope, $http, uiGridConstants) {
 
-        FoodService.getFoods(
-            paginationOptions.pageNumber,
-            paginationOptions.pageSize).then(function (data) {
-                $scope.gridOptions.data = data.content;
-                $scope.gridOptions.totalItems = data.totalElements;
-            }.catch(function (e) {
-                console.log("got error", e);
-            }));
-
-        $scope.gridOptions = {
-            paginationPageSizes: [5, 10, 20],
-            paginationPageSize: paginationOptions.pageSize,
-            enableColumnMenus: false,
-            useExternalPagination: true,
-            columnDefs: [
-                { name: 'id' },
-                { name: 'name' },
-                { name: 'createdAt' },
-                { name: 'updatedAt' }
-            ],
-            onRegisterApi: function (gridApi) {
-                $scope.gridApi = gridApi;
-                gridApi.pagination.on.paginationChanged(
-                    $scope,
-                    function (newPage, pageSize) {
-                        paginationOptions.pageNumber = newPage;
-                        paginationOptions.pageSize = pageSize;
-                        FoodService.getFoods(newPage, pageSize)
-                            .then(function (data) {
-                                $scope.gridOptions.data = data.content;
-                                $scope.gridOptions.totalItems = data.totalElements;
-                            }).catch(function (e) {
-                                console.log("got error", e);
-                            });
-                    });
-            }
-        };
-    }]);
-
-app.service('FoodService', ['$http', function ($http) {
-
-    function getFoods(pageNumber, size) {
-        pageNumber = pageNumber > 0 ? pageNumber - 1 : 0;
-        return $http({
-            method: 'GET',
-            url: 'foods?page=' + pageNumber + '&size=' + size
-        }).then(function sucessCallback(response) {
-            console.log('sucessCallback');
-        }).catch(function (e) {
-            console.log("got error", e);
-        });
-    }
-    return {
-        getFoods: getFoods
+    var paginationOptions = {
+        pageNumber: 1,
+        pageSize: 25,
+        sort: null
     };
-}]);
+
+    $scope.gridOptions = {
+        paginationPageSizes: [25, 50, 75],
+        paginationPageSize: 25,
+        useExternalPagination: true,
+        useExternalSorting: true,
+        columnDefs: [
+            { name: 'name' },
+            { name: 'id', enableSorting: false }
+        ],
+        onRegisterApi: function (gridApi) {
+            $scope.gridApi = gridApi;
+            gridApi.pagination.on.paginationChanged($scope, function (newPage, pageSize) {
+                paginationOptions.pageNumber = newPage;
+                paginationOptions.pageSize = pageSize;
+                getPage();
+            });
+        }
+    };
+
+    var getPage = function () {
+        $http.get('foods?page=' + paginationOptions.pageNumber + '&size=' + paginationOptions.pageSize)
+            .then(function (response) {
+                var data = response.data;
+                $scope.gridOptions.data = response.data;
+            });
+    };
+
+    getPage();
+}
+]);
