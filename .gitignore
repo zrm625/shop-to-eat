@@ -53,3 +53,14 @@ out/
 *.zip
 *.tar.gz
 *.rar
+build
+.gradle
+.idea
+out
+*.iml
+*.ipr
+*.iws
+.DS_Store
+
+# Enable local testing, DO NOT EVER CHECK THIS IN!
+.env
