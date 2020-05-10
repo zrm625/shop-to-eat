@@ -1,0 +1,8 @@
+/*
+ * Base structure
+ */
+
+ html,
+ body {
+   background-color: #333;
+ }
