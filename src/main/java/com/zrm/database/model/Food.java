@@ -7,6 +7,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "foods")
 public class Food extends AuditModel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
