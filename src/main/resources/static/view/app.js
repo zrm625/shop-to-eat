@@ -10,7 +10,7 @@ app.controller('FoodCtrl', ['$scope', 'FoodService',
 
         FoodService.getFoods(
             paginationOptions.pageNumber,
-            paginationOptions.pageSize).success(function (data) {
+            paginationOptions.pageSize).then(function (data) {
                 $scope.gridOptions.data = data.content;
                 $scope.gridOptions.totalItems = data.totalElements;
             });
