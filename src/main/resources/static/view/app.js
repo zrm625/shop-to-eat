@@ -47,7 +47,7 @@ app.service('FoodService', ['$http', function ($http) {
 
     function getFoods(pageNumber, size) {
         pageNumber = pageNumber > 0 ? pageNumber - 1 : 0;
-        return $https({
+        return $http({
             method: 'GET',
             url: 'foods?page=' + pageNumber + '&size=' + size
         }).then(function sucessCallback(response) {
