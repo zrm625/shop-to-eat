@@ -13,6 +13,8 @@ app.controller('FoodCtrl', ['$scope', '$http', 'uiGridConstants', function ($sco
         useExternalPagination: true,
         useExternalSorting: false,
         enablePaginationControls: false,
+        enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
+        enableVerticalScrollbar: uiGridConstants.scrollbars.NEVER,
         columnDefs: [
             { name: 'name' },
             { name: 'id', enableSorting: false, visible: false }
