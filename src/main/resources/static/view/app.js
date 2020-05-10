@@ -28,10 +28,10 @@ app.controller('FoodCtrl', ['$scope', '$http', 'uiGridConstants', function ($sco
     };
 
     var getPage = function () {
-        $http.get('foods?page=' + paginationOptions.pageNumber + '&size=' + paginationOptions.pageSize)
+        var pageNum = paginationOptions.pageNumber - 1;
+        $http.get('foods?page=' + (paginationOptions.pageNumber - 1) + '&size=' + paginationOptions.pageSize)
             .then(function (response) {
-                var data = response.data;
-                $scope.gridOptions.data = response.data;
+                $scope.gridOptions.data = response.content;
             });
     };
 
