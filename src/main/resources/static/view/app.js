@@ -13,6 +13,8 @@ app.controller('FoodCtrl', ['$scope', 'FoodService',
             paginationOptions.pageSize).then(function (data) {
                 $scope.gridOptions.data = data.content;
                 $scope.gridOptions.totalItems = data.totalElements;
+            }, function errorCallback() {
+                console.log('errorCallback 1');
             });
 
         $scope.gridOptions = {
@@ -37,6 +39,8 @@ app.controller('FoodCtrl', ['$scope', 'FoodService',
                             .then(function (data) {
                                 $scope.gridOptions.data = data.content;
                                 $scope.gridOptions.totalItems = data.totalElements;
+                            }, function errorCallback() {
+                                console.log('errorCallback 2');
                             });
                     });
             }
