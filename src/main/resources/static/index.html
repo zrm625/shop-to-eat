@@ -1,16 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <title>Welcome</title>
+    <title>Hello!</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="style/style.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest/site.webmanifest">
 </head>
 
 <body>
-    <p>Welcome to Shop to Eat.</p>
+    <h1>
+        InstallableR
+    </h1>
+
+    <p id="requireHTTPS" class="hidden">
+        <b>STOP!</b> This page <b>must</b> be served over HTTPS.
+        Please <a>reload this page via HTTPS</a>.
+    </p>
+
+    <p>
+        Make me installable, follow the
+        <a href="https://web.dev/installable/discover-installable/codelab-make-installable">instructions</a> here.
+    </p>
+
+    <!-- Install button, hidden by default -->
+    <div id="installContainer" class="hidden">
+        <button id="butInstall" type="button">
+            Install
+        </button>
+    </div>
+
+    <!-- import the webpage's javascript file -->
+    <script src="scripts/script.js" defer></script>
 </body>
 
 </html>
