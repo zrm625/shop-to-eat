@@ -22,7 +22,9 @@ app.controller('FoodCtrl', ['$scope', 'FoodService',
             useExternalPagination: true,
             columnDefs: [
                 { name: 'id' },
-                { name: 'name' }
+                { name: 'name' },
+                { name: 'createdAt' },
+                { name: 'updatedAt' }
             ],
             onRegisterApi: function (gridApi) {
                 $scope.gridApi = gridApi;
@@ -32,7 +34,7 @@ app.controller('FoodCtrl', ['$scope', 'FoodService',
                         paginationOptions.pageNumber = newPage;
                         paginationOptions.pageSize = pageSize;
                         FoodService.getFoods(newPage, pageSize)
-                            .success(function (data) {
+                            .then(function (data) {
                                 $scope.gridOptions.data = data.content;
                                 $scope.gridOptions.totalItems = data.totalElements;
                             });
@@ -45,9 +47,13 @@ app.service('FoodService', ['$http', function ($http) {
 
     function getFoods(pageNumber, size) {
         pageNumber = pageNumber > 0 ? pageNumber - 1 : 0;
-        return $http({
+        return $https({
             method: 'GET',
             url: 'foods?page=' + pageNumber + '&size=' + size
+        }).then(function sucessCallback(response) {
+            console.log('sucessCallback');
+        }, function errorCallback(response) {
+            console.log('errorCallback');
         });
     }
     return {
