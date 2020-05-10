@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.grid', 'ui.grid.pagination']);
+var app = angular.module('app', ['ngTouch', 'ui.grid', 'ui.grid.pagination']);
 
 app.controller('FoodCtrl', ['$scope', '$http', 'uiGridConstants', function ($scope, $http, uiGridConstants) {
 
@@ -12,7 +12,7 @@ app.controller('FoodCtrl', ['$scope', '$http', 'uiGridConstants', function ($sco
         paginationPageSizes: [25, 50, 75],
         paginationPageSize: 25,
         useExternalPagination: true,
-        useExternalSorting: true,
+        useExternalSorting: false,
         columnDefs: [
             { name: 'name' },
             { name: 'id', enableSorting: false }
@@ -31,7 +31,7 @@ app.controller('FoodCtrl', ['$scope', '$http', 'uiGridConstants', function ($sco
         var pageNum = paginationOptions.pageNumber - 1;
         $http.get('foods?page=' + (paginationOptions.pageNumber - 1) + '&size=' + paginationOptions.pageSize)
             .then(function (response) {
-                $scope.gridOptions.data = response.content;
+                $scope.gridOptions.data = response.data.content;
             });
     };
 

@@ -2,8 +2,24 @@
 <html lang="en" ng-app="app">
 
 <head>
+    <meta charset="utf-8">
+
+    <!-- For IE idiots -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- For everyone else-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#563d7c">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
     <link rel="stylesheet" href="node_modules/angular-ui-grid/ui-grid.min.css">
-    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.7.0/angular.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.7.0/angular-touch.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.7.0/angular-animate.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.7.0/angular-aria.js"></script>
     <script src="node_modules/angular-ui-grid/ui-grid.min.js"></script>
     <script src="node_modules/angular-ui-grid/ui-grid.pagination.js"></script>
     <script src="view/app.js"></script>
@@ -14,6 +30,23 @@
         <div ui-grid="gridOptions" class="grid" ui-grid-pagination>
         </div>
     </div>
+    <form>
+        <div class="form-row align-items-center">
+            <div class="col-auto">
+                <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Food</div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup"
+                        placeholder="Enter food to add...">
+                </div>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-2">ADD</button>
+            </div>
+        </div>
+    </form>
 </body>
 
 </html>
