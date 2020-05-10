@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngTouch', 'ui.grid', 'ui.grid.pagination']);
+var app = angular.module('app', ['ui.grid', 'ui.grid.pagination']);
 
 app.controller('FoodCtrl', ['$scope', '$http', 'uiGridConstants', function ($scope, $http, uiGridConstants) {
 
