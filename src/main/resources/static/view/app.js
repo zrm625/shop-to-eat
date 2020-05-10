@@ -9,13 +9,13 @@ app.controller('FoodCtrl', ['$scope', '$http', 'uiGridConstants', function ($sco
     };
 
     $scope.gridOptions = {
-        paginationPageSizes: [25, 50, 75],
-        paginationPageSize: 25,
+        paginationPageSize: 100,
         useExternalPagination: true,
         useExternalSorting: false,
+        enablePaginationControls: false,
         columnDefs: [
             { name: 'name' },
-            { name: 'id', enableSorting: false }
+            { name: 'id', enableSorting: false, visible: false }
         ],
         onRegisterApi: function (gridApi) {
             $scope.gridApi = gridApi;
